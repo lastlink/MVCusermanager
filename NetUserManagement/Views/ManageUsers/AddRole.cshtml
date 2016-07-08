@@ -1,0 +1,29 @@
+﻿@*@model MVCWebApplication.Models.AspNetUser*@
+
+@{
+    ViewBag.Title = "Change Role";
+}
+<div class="table" style="background-color:white; padding:10px">
+    <h2>Change Role</h2>
+    <span>Currenlty used for developers only to filter out pages in development, later if desired roles can be added to limit who can see which pages.</span><br />
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <select id="Type" name="roleDrop">
+            <option selected="selected" value="Researcher">Researcher</option>
+            <option value="Admin">Admin</option>
+            <option value="Developer">Developer</option>
+            <option value="Locked">Locked</option>
+        </select>
+        <input type="submit" class="btn btn-success" name="submitButton" value="Change Role" />
+
+    }
+
+       
+
+    <div>
+        <a class="btn btn-primary" href="/ManageUsers/Edit/@ViewBag.UserID">Back to Edit</a> 
+        @*@Html.ActionLink("Back to Edit", "Edit/@ViewBag.UserID")*@
+    </div>
+</div>
